@@ -262,11 +262,9 @@ function encodeToRot13(str) {
       finalArray.push(String.fromCharCode(letter));
     }
   }
-  if (letters.reverse()[0] === '?') {
+  if (letters[letters.length - 1] === '?') {
     finalArray.push('?');
-  }
-  console.log(letters.reverse()[0]);
-  if (letters.reverse()[0] === '!') {
+  } else if (letters[letters.length - 1] === '!') {
     finalArray.push('!');
   }
   return finalArray.join('');
