@@ -142,8 +142,8 @@ function removeFirstOccurrences(str, value) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  return str.replace(/<|>/g, '');
 }
 
 
@@ -157,8 +157,8 @@ function unbracketTag(/* str */) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase(/* str */) {
-  throw new Error('Not implemented');
+function convertToUpperCase(str) {
+  return str.toUpperCase();
 }
 
 /**
@@ -176,8 +176,8 @@ function convertToUpperCase(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
@@ -203,8 +203,31 @@ function extractEmails(/* str */) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  let finalRectangle = '';
+  for (let h = 0; h < height; h += 1) {
+    let row = '';
+    for (let w = 0; w < width; w += 1) {
+      if (w === 0 && h === 0) {
+        row += '┌';
+      } else if (w === width - 1 && h === 0) {
+        row += '┐';
+      } else if (w === 0 && h === height - 1) {
+        row += '└';
+      } else if (w === width - 1 && h === height - 1) {
+        row += '┘';
+      } else if ((w === 0 || w === width - 1) && (h > 0 && h < height - 1)) {
+        row += '│';
+      } else if ((w > 0 || w < width - 1) && (h === 0 || h === height - 1)) {
+        row += '─';
+      } else {
+        row += ' ';
+      }
+    }
+    row += '\n';
+    finalRectangle += row;
+  }
+  return finalRectangle;
 }
 
 
@@ -241,8 +264,8 @@ function encodeToRot13(/* str */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return value instanceof String || typeof value === 'string';
 }
 
 
